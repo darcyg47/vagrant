@@ -20,3 +20,5 @@ yum install -y php php-cli php-common php-devel php-mysql
 cd /vagrant
 sudo -u vagrant wget -q https://raw.githubusercontent.com/darcyg47/vagrant/master/files/index.html
 sudo -u vagrant wget -q https://raw.githubusercontent.com/darcyg47/vagrant/master/files/info.php
+
+service httpd restart
