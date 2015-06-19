@@ -1,5 +1,3 @@
-Test
-
 #!/bin/bash
 
 # Update CentOS with any patches, excluding the kernel
