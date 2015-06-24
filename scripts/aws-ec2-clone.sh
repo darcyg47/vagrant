@@ -32,14 +32,18 @@ service mysqld start
 mysql -u root -e "SHOW DATABASES";
 
 # Enable Remi repo
-cd /etc/yum.repos.d
-wget http://rpms.remirepo.net/enterprise/remi.repo
+# cd /etc/yum.repos.d
+# wget http://rpms.remirepo.net/enterprise/remi.repo
+
+# Enable additional repos
+# yum install epel-release
+
 
 #install phpMyAdmin
-yum --enablerepo=remi install phpMyAdmin
+# yum --enablerepo=remi install phpMyAdmin
 
 # Update PHP to 5.5
-yum --enablerepo=remi-php55,remi -y update php\*
+# yum --enablerepo=remi-php55,remi -y update php\*
 
 service httpd restart
 
