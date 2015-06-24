@@ -27,9 +27,18 @@ cd /etc/yum.repos.d
 wget http://rpms.remirepo.net/enterprise/remi.repo
 yum --enablerepo=remi-php55,remi -y update php\*
 
+service httpd restart
+
+# Install MySQL
+yum install -y mysql mysql-server mysql-devel
+chkconfig --add mysqld
+chkconfig mysqld on
+
+service mysqld start
+
+mysql -u root -e "SHOW DATABASES";
+
 # Download Starter Content
 cd /vagrant
 sudo -u vagrant wget -q https://raw.githubusercontent.com/darcyg47/vagrant/master/files/index.html
 sudo -u vagrant wget -q https://raw.githubusercontent.com/darcyg47/vagrant/master/files/info.php
-
-service httpd restart
