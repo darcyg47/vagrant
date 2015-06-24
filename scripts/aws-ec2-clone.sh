@@ -22,13 +22,6 @@ service httpd start
 # Install PHP
 yum install -y php php-cli php-common php-devel php-mysql
 
-# Update PHP to 5.5
-cd /etc/yum.repos.d
-wget http://rpms.remirepo.net/enterprise/remi.repo
-yum --enablerepo=remi-php55,remi -y update php\*
-
-service httpd restart
-
 # Install MySQL
 yum install -y mysql mysql-server mysql-devel
 chkconfig --add mysqld
@@ -37,6 +30,18 @@ chkconfig mysqld on
 service mysqld start
 
 mysql -u root -e "SHOW DATABASES";
+
+# Enable Remi repo
+cd /etc/yum.repos.d
+wget http://rpms.remirepo.net/enterprise/remi.repo
+
+#install phpMyAdmin
+yum --enablerepo=remi install phpMyAdmin
+
+# Update PHP to 5.5
+yum --enablerepo=remi-php55,remi -y update php\*
+
+service httpd restart
 
 # Download Starter Content
 cd /vagrant
