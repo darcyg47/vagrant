@@ -28,14 +28,14 @@ chkconfig --add mysqld
 chkconfig mysqld on
 service mysqld start
 
-# Install phpMyAdmin
-yum install -y phpMyAdmin
-
 # Include additional repos (required for updates)
 cd /etc/yum/repos.d
 wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
 wget http://rpms.remirepo.net/enterprise/remi-release-6.rpm
 rpm -Uvh remi-release-6*.rpm epel-release-*.rpm
+
+# Install phpMyAdmin
+yum install -y phpMyAdmin
 
 # Update PHP and MySQL
 yum --enablerepo=remi-php55,remi -y update php\*
