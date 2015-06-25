@@ -27,10 +27,9 @@ yum install -y mysql mysql-server mysql-devel
 chkconfig --add mysqld
 chkconfig mysqld on
 service mysqld start
-mysql -u root -e "SET PASSWORD FOR root@localhost = PASSWORD('password');"
 
 # Install phpMyAdmin
-yum install phpMyAdmin
+yum install -y phpMyAdmin
 
 # Include additional repos (required for updates)
 cd /etc/yum/repos.d
@@ -45,6 +44,9 @@ yum --enablerepo=remi update mysql-server
 # Restart services
 service mysqld restart
 service httpd restart
+
+# Set password for root user in phpMyAdmin
+mysql -u root -e "SET PASSWORD FOR root@localhost = PASSWORD('password');"
 
 # Download Starter Content
 cd /vagrant
