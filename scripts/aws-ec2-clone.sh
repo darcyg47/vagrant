@@ -39,7 +39,7 @@ yum install -y phpMyAdmin
 
 # Update PHP and MySQL
 yum --enablerepo=remi-php55,remi -y update php\*
-yum --enablerepo=remi update mysql-server
+yum --enablerepo=remi -y update mysql-server
 
 # Restart services
 service mysqld restart
