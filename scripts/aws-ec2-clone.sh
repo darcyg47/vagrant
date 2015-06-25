@@ -26,25 +26,24 @@ yum install -y php php-cli php-common php-devel php-mysql
 yum install -y mysql mysql-server mysql-devel
 chkconfig --add mysqld
 chkconfig mysqld on
-
 service mysqld start
+mysql -u root -e "SET PASSWORD FOR root@localhost = PASSWORD('password');"
 
-mysql -u root -e "SHOW DATABASES";
+# Install phpMyAdmin
+yum install phpMyAdmin
 
-# Enable Remi repo
-# cd /etc/yum.repos.d
-# wget http://rpms.remirepo.net/enterprise/remi.repo
+# Include additional repos (required for updates)
+cd /etc/yum/repos.d
+wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+wget http://rpms.remirepo.net/enterprise/remi-release-6.rpm
+rpm -Uvh remi-release-6*.rpm epel-release-*.rpm
 
-# Enable additional repos
-# yum install epel-release
+# Update PHP and MySQL
+yum --enablerepo=remi-php55,remi -y update php\*
+yum --enablerepo=remi update mysql-server
 
-
-#install phpMyAdmin
-# yum --enablerepo=remi install phpMyAdmin
-
-# Update PHP to 5.5
-# yum --enablerepo=remi-php55,remi -y update php\*
-
+# Restart services
+service mysqld restart
 service httpd restart
 
 # Download Starter Content
