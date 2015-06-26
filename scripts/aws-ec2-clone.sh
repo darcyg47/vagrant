@@ -50,6 +50,12 @@ cd /etc/httpd/conf/
 sudo rm -f httpd.conf
 sudo wget -q https://raw.githubusercontent.com/darcyg47/vagrant/master/files/httpd.conf
 
+# Install and configure memcached extension
+sudo yum install -y memcached
+chkconfig memcached on
+service memcached start
+yum --enablerepo=remi-php55,remi install php php-pecl-memcached
+
 # Restart services
 service mysqld restart
 service httpd restart
