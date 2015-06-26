@@ -29,9 +29,8 @@ chkconfig mysqld on
 service mysqld start
 
 # Include additional repos (required for updates)
-cd /etc/yum/repos.d
-wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
-wget http://rpms.remirepo.net/enterprise/remi-release-6.rpm
+wget -q https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+wget -q http://rpms.remirepo.net/enterprise/remi-release-6.rpm
 rpm -Uvh remi-release-6*.rpm epel-release-*.rpm
 
 # Install phpMyAdmin
@@ -45,7 +44,12 @@ yum --enablerepo=remi -y update mysql-server
 # access from the host machine
 cd /etc/httpd/conf.d/
 sudo rm -f phpMyAdmin.conf
-sudo wget https://raw.githubusercontent.com/darcyg47/vagrant/master/files/phpMyAdmin.conf
+sudo wget -q https://raw.githubusercontent.com/darcyg47/vagrant/master/files/phpMyAdmin.conf
+
+# Replace the httpd config file to allow modrewrite
+cd /etc/httpd/conf/
+sudo rm -f httpd.conf
+sudo wget -q https://raw.githubusercontent.com/darcyg47/vagrant/master/files/httpd.conf
 
 # Restart services
 service mysqld restart
@@ -56,7 +60,5 @@ mysql -u root -e "SET PASSWORD FOR root@localhost = PASSWORD('password');"
 
 # Download Starter Content
 cd /vagrant
-sudo -u vagrant wget https://raw.githubusercontent.com/darcyg47/vagrant/master/files/index.html
-sudo -u vagrant wget https://raw.githubusercontent.com/darcyg47/vagrant/master/files/info.php
-
-
+sudo -u vagrant wget -q https://raw.githubusercontent.com/darcyg47/vagrant/master/files/index.html
+sudo -u vagrant wget -q https://raw.githubusercontent.com/darcyg47/vagrant/master/files/info.php
