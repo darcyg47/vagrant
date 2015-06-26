@@ -52,8 +52,8 @@ sudo wget -q https://raw.githubusercontent.com/darcyg47/vagrant/master/files/htt
 
 # Replace the mysql config file
 cd /etc/
-sudo rm -f my.conf
-sudo wget -q https://raw.githubusercontent.com/darcyg47/vagrant/master/files/my.conf
+sudo rm -f my.cnf
+sudo wget -q https://raw.githubusercontent.com/darcyg47/vagrant/master/files/my.cnf
 
 # Install and configure memcached extension
 sudo yum install -y memcached
