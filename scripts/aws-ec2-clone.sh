@@ -50,6 +50,11 @@ cd /etc/httpd/conf/
 sudo rm -f httpd.conf
 sudo wget -q https://raw.githubusercontent.com/darcyg47/vagrant/master/files/httpd.conf
 
+# Replace the mysql config file
+cd /etc/
+sudo rm -f my.conf
+sudo wget -q https://raw.githubusercontent.com/darcyg47/vagrant/master/files/my.conf
+
 # Install and configure memcached extension
 sudo yum install -y memcached
 chkconfig memcached on

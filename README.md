@@ -6,4 +6,7 @@ A sample Vagrantfile is provided.
 - PHP 5.5.26
 - MySql 5.6.22
 - phpMyAdmin 4.4.10
-- modifies config files to allow RewriteEngine and access to phpMyAdmin from the host machine
+- modifies config files to:
+  - allow use of RewriteEngine
+  - allow access to phpMyAdmin from the host machine
+  - remove STRICT_TRANS_TABLES from mySql
