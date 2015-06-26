@@ -39,11 +39,8 @@ yum install -y phpMyAdmin
 
 # Update PHP
 yum --enablerepo=remi-php55,remi -y update php\*
-#yum --enablerepo=remi -y update mysql-server
-#yum update mysql-community-server
 
-# Delete the phpMyAdmin config file and replace it with one that will allow
-# access from the host machine
+# Replace the phpMyAdmin config file with one that will allow access from the host machine
 cd /etc/httpd/conf.d/
 sudo rm -f phpMyAdmin.conf
 sudo wget -q https://raw.githubusercontent.com/darcyg47/vagrant/master/files/phpMyAdmin.conf
