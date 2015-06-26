@@ -43,9 +43,9 @@ yum --enablerepo=remi -y update mysql-server
 
 # Delete the phpMyAdmin config file and replace it with one that will allow
 # access from the host machine
-rm /etc/httpd/conf.d/phpMyAdmin.conf
-cd /etc/httpd/conf.d/
-sudo -u vagrant wget -q https://raw.githubusercontent.com/darcyg47/vagrant/master/files/phpMyAdmin.conf
+#sudo rm /etc/httpd/conf.d/phpMyAdmin.conf
+#cd /etc/httpd/conf.d/
+#sudo -u vagrant wget -q https://raw.githubusercontent.com/darcyg47/vagrant/master/files/phpMyAdmin.conf
 
 # Restart services
 service mysqld restart
@@ -56,5 +56,5 @@ mysql -u root -e "SET PASSWORD FOR root@localhost = PASSWORD('password');"
 
 # Download Starter Content
 cd /vagrant
-sudo -u vagrant wget -q https://raw.githubusercontent.com/darcyg47/vagrant/master/files/index.html
-sudo -u vagrant wget -q https://raw.githubusercontent.com/darcyg47/vagrant/master/files/info.php
+sudo -u vagrant wget https://raw.githubusercontent.com/darcyg47/vagrant/master/files/index.html
+sudo -u vagrant wget https://raw.githubusercontent.com/darcyg47/vagrant/master/files/info.php
