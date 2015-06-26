@@ -22,15 +22,14 @@ service httpd start
 # Install PHP
 yum install -y php php-cli php-common php-devel php-mysql
 
-# Include additional repos (required for updates)
+# Include additional repos
 wget -q https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
 wget -q http://rpms.remirepo.net/enterprise/remi-release-6.rpm
 wget -q localinstall http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
 rpm -Uvh remi-release-6*.rpm epel-release-*.rpm mysql-community-release-*.rpm
 
 # Install MySQL
-yum install mysql-community-server
-#yum install -y mysql mysql-server mysql-devel
+yum install -y mysql mysql-server mysql-devel
 chkconfig --add mysqld
 chkconfig mysqld on
 service mysqld start
@@ -38,9 +37,10 @@ service mysqld start
 # Install phpMyAdmin
 yum install -y phpMyAdmin
 
-# Update PHP and MySQL
+# Update PHP
 yum --enablerepo=remi-php55,remi -y update php\*
 #yum --enablerepo=remi -y update mysql-server
+#yum update mysql-community-server
 
 # Delete the phpMyAdmin config file and replace it with one that will allow
 # access from the host machine
