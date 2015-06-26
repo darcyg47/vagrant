@@ -41,6 +41,12 @@ yum install -y phpMyAdmin
 yum --enablerepo=remi-php55,remi -y update php\*
 yum --enablerepo=remi -y update mysql-server
 
+# Delete the phpMyAdmin config file and replace it with one that will allow
+# access from the host machine
+rm /etc/httpd/conf.d/phpMyAdmin.conf
+cd /etc/httpd/conf.d/
+sudo -u vagrant wget -q https://raw.githubusercontent.com/darcyg47/vagrant/master/files/phpMyAdmin.conf
+
 # Restart services
 service mysqld restart
 service httpd restart
