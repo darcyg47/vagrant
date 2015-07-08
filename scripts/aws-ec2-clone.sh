@@ -58,8 +58,8 @@ sudo wget -q https://raw.githubusercontent.com/darcyg47/vagrant/master/files/my.
 # Install and configure memcached extension
 sudo yum install -y memcached
 chkconfig memcached on
+sudo yum --enablerepo=remi-php55,remi install -y php php-pecl-memcached
 service memcached start
-yum --enablerepo=remi-php55,remi install php php-pecl-memcached
 
 # Restart services
 service mysqld restart
