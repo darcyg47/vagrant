@@ -14,4 +14,5 @@ A sample Vagrantfile is provided.
   - allow use of RewriteEngine
   - allow access to phpMyAdmin from the host machine
   - remove STRICT_TRANS_TABLES from mySql
+  - turned EnableSendfile off to try to fix the Vagrant update issue 
 
