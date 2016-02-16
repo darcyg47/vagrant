@@ -1,8 +1,5 @@
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
-
 Vagrant.configure(2) do |config|
-  config.vm.box = "chef/centos-6.6"
+  config.vm.box = "bento/centos-6.7"
   config.vbguest.auto_update = false
   config.vm.provision "file", source: "~/vagrant/files/git-config", destination: "~/.gitconfig"
   config.vm.hostname = "ec2-clone"
